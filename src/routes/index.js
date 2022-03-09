@@ -9,13 +9,14 @@ router.get('/', (req, res) => {
 
 export default router; */
 import express from 'express';
-import postRoute from './postRoute';
-
 import userRoute from './userRoute';
+import socialUserRoute from './socialUserRoute';
+import postSocialRoute from './postSocialRoute';
 
 const router = express.Router();
 
-postRoute(router);
 userRoute(router);
+socialUserRoute(router);
+postSocialRoute(router);
 
 export default router;

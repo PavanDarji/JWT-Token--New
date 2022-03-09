@@ -12,6 +12,7 @@ class UserModel {
         },
         email: {
           type: String,
+          unique:true,
           required: true
         },
         password: {
@@ -20,6 +21,7 @@ class UserModel {
         },
         mno: {
           type: Number,
+          unique:true,
           required: true
         },
       },

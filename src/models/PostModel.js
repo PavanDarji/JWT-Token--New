@@ -1,38 +1,42 @@
 import mongoose, { Schema } from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
-class PostModel {
-  // eslint-disable-next-line class-methods-use-this
-  initSchema() {
-    const schema = new Schema(
-      {
-        title: {
-          type: String,
-          default: null,
+class SocialPost {
+    // eslint-disable-next-line class-methods-use-this
+    initSchema() {
+        const schema = new Schema({
+            userId: {
+                type: String,
+                required: true
+            },
+            desc: {
+                type: String,
+                max: 500
+            },
+            img: {
+                type: String
+            },
+            likes: {
+                type: Array,
+                default: []
+            },
+        
         },
-        category: {
-          type: String,
-          required: true,
-          unique: true,
-        },
-      },
-      {
-        timestamps: true,
-      },
-    );
-    schema.plugin(uniqueValidator);
-    mongoose.model('posts', schema);
-  }
+            { timestamps: true }
+        )
+        schema.plugin(uniqueValidator);
+        mongoose.model('SocialPost', schema);
+    }
 
-  getInstance() {
-    this.initSchema();
-    return mongoose.model('posts');
-  }
+    getInstance() {
+        this.initSchema();
+        return mongoose.model('SocialPost');
+    }
 
-  // eslint-disable-next-line class-methods-use-this
-  getModel() {
-    return mongoose.model('posts');
-  }
+    // eslint-disable-next-line class-methods-use-this
+    getModel() {
+        return mongoose.model('SocialPost');
+    }
 }
 
-export default PostModel;
+export default SocialPost;
